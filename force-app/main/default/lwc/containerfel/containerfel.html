@@ -19,9 +19,12 @@
                 columns={columns}
             >
             </lightning-datatable>
-            <!--template for:each={aircrafts} for:item="aircraft">
-                <lightning-pill key={aircraft.fields.Id.value} label={aircraft.fields.Name.value} href=""></lightning-pill>
-            </template-->
+            <template for:each={aircrafts.data} for:item="aircraft">
+                <li key={aircraft.id}>
+                    {aircraft.Name}
+                </li>
+                <!--lightning-pill key={aircraft.Id} label={aircraft.Name} href=""></lightning-pill-->
+            </template>
         </template>
         <template if:true={error}>
             <div class="slds-text-color_error">

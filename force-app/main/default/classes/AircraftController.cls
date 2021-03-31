@@ -4,6 +4,7 @@ public with sharing class AircraftController {
         return [
             SELECT Id, Name
             FROM den_Aircraft__c
+            LIMIT 10
             ];
     }
 }
