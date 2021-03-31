@@ -1,0 +1,25 @@
+<template>
+
+    <lightning-button-icon-stateful icon-name="utility:like" selected={likeState} onclick={handleLikeButtonClick} alternative-text="Like"></lightning-button-icon-stateful>
+
+    <template if:true={aircrafts}>
+        <div class="slds-text-color_error">
+            I am here
+        </div>
+        <template for:each={users.data} for:item="user">
+            <div class="slds-text-color_error" key={user.id}> 
+                {user.Name}
+            </div>
+            <div class="slds-text-color_error" key={user.id}>
+                {user.Title}
+            </div>
+
+        </template>
+    </template>
+    <template if:true={error}>
+        <div class="slds-text-color_error">
+            An error occurred while loading the bear list
+        </div>
+    </template>
+
+</template>
