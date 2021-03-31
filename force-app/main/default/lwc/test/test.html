@@ -1,0 +1,12 @@
+<template>
+    <template if:true={aircrafts}>
+        <template for:each={aircrafts} for:item="aircraft">
+            <lightning-pill key={aircraft.Id} label={aircraft.Name}></lightning-pill>
+        </template>
+    </template>
+    <template if:true={error}>
+        <div class="slds-text-color_error">
+            An error occurred while loading the bear list
+        </div>
+    </template> 
+</template>

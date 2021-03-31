@@ -1,0 +1,32 @@
+<template>
+    <lightning-card title="Hello">
+        <lightning-button label="New" slot="actions"></lightning-button>
+        <header class="header">Available Bikes for {name} {recordId} {status} {statuscolor}</header>
+        <a href={recordidurl}>
+            <img src={statuscolor} alt="Color" />
+        </a>
+        <template for:each={bikes} for:item="bike">
+            <lightning-pill key={bike.fields.Id.value} label={bike.fields.Name.value} href=""></lightning-pill>
+        </template>
+
+        <template if:true={aircrafts}>
+            <div class="slds-text-color_error">
+                I am here
+            </div>
+            <lightning-datatable
+                key-field="Id"
+                data={aircrafts.data}
+                columns={columns}
+            >
+            </lightning-datatable>
+            <!--template for:each={aircrafts} for:item="aircraft">
+                <lightning-pill key={aircraft.fields.Id.value} label={aircraft.fields.Name.value} href=""></lightning-pill>
+            </template-->
+        </template>
+        <template if:true={error}>
+            <div class="slds-text-color_error">
+                An error occurred while loading the bear list
+            </div>
+        </template>
+    </lightning-card>
+</template>
