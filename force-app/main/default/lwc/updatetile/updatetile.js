@@ -38,7 +38,8 @@ const data = [{
 ];*/
 import IDEN_FIELD from '@salesforce/schema/User.Id';
 import NOMBRE_FIELD from '@salesforce/schema/User.Name';
-import TITLE_FIELD from '@salesforce/schema/User.Title';
+import TITLE_FIELD from '@salesforce/schema/User.Title'; //MediumPhotoUrl
+import PHOTO_FIELD from '@salesforce/schema/User.MediumPhotoUrl';
 
 const actions = [
     { label: 'Show details', name: 'show_details' },
@@ -48,6 +49,7 @@ const COLUMNSFEL = [
     { label:'Action', type: 'action', typeAttributes: { rowActions: actions, menuAlignment: 'left' } },
     { label: 'Employee Name',sortable:"true",  fieldName: NOMBRE_FIELD.fieldApiName, type: 'text' },
     { label: 'Title',sortable:"true", fieldName: TITLE_FIELD.fieldApiName, type: 'text' },
+    { label: 'Checked', fieldName: PHOTO_FIELD.fieldApiName, type: 'text' },
 
 ];
 
@@ -121,8 +123,8 @@ columnsfel=COLUMNSFEL;
         var fieldName = event.detail.fieldName;
         var sortDirection = event.detail.sortDirection;
         // assign the latest attribute with the sorted column fieldName and sorted direction
-        this.sortedBy = fieldName;
-        this.sortedDirection = sortDirection;
+        this.sortBy = fieldName;
+        this.sortDirection = sortDirection;
         this.data = this.sortData(fieldName, sortDirection);
    }
 
