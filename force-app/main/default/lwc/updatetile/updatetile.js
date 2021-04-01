@@ -46,8 +46,8 @@ const actions = [
 ];
 const COLUMNSFEL = [
     { label:'Action', type: 'action', typeAttributes: { rowActions: actions, menuAlignment: 'left' } },
-    { label: 'Employee Name', sortable:'true', fieldName: NOMBRE_FIELD.fieldApiName, type: 'text' },
-    { label: 'Title', fieldName: TITLE_FIELD.fieldApiName, type: 'text' },
+    { label: 'Employee Name',sortable:"true",  fieldName: NOMBRE_FIELD.fieldApiName, type: 'text' },
+    { label: 'Title',sortable:"true", fieldName: TITLE_FIELD.fieldApiName, type: 'text' },
 
 ];
 
@@ -60,11 +60,17 @@ const COLUMNSFEL = [
     @track likeStateSize04 = false;
     @track likeStateDisabled = false;
     @track answerStateDisabled = false;
+
+    @track results=[];
+    @track columns = COLUMNSFEL;
+    @track sortBy='Title';
+    @track sortDirection='asc';
     // Copied structure
 columnsfel=COLUMNSFEL;
     @wire (getAllUsers) users;
     data = data;
     columns = columns;
+
 // Ends Here ---------
 
     handleLikeButtonClick() {
@@ -118,8 +124,8 @@ columnsfel=COLUMNSFEL;
         this.sortedBy = fieldName;
         this.sortedDirection = sortDirection;
         this.data = this.sortData(fieldName, sortDirection);
-
    }
+
 }
 
 
