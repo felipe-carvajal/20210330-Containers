@@ -1,25 +1,34 @@
 <template>
 
     <lightning-button-icon-stateful icon-name="utility:like" selected={likeState} onclick={handleLikeButtonClick} alternative-text="Like"></lightning-button-icon-stateful>
+    <div style="background: rgba(85, 202, 30, 0)" class="wrapper">
+        <div style="height: 300px;">
+            <lightning-datatable
+                    key-field="id"
+                    data={data}
+                    columns={columns}>
+            </lightning-datatable>
+        </div>  
+        
+        <template if:true={users}>
+                <div class="slds-text-color_error">
+                    I am here
+                </div>
+                    <template for:each={users.data} for:item="user">
 
-    <template if:true={aircrafts}>
-        <div class="slds-text-color_error">
-            I am here
-        </div>
-        <template for:each={users.data} for:item="user">
-            <div class="slds-text-color_error" key={user.id}> 
-                {user.Name}
-            </div>
-            <div class="slds-text-color_error" key={user.id}>
-                {user.Title}
+                        <lightning-card  title="Employee" key={user.id}>
+                            <p class="slds-p-horizontal_small">{user.Name}</p>
+                            <p class="slds-p-horizontal_small">{user.Title}</p>
+                        </lightning-card>
+
+                    </template>
+
+        </template>
+        <template if:true={error}>
+            <div class="slds-text-color_error">
+                An error occurred while loading the bear list
             </div>
 
         </template>
-    </template>
-    <template if:true={error}>
-        <div class="slds-text-color_error">
-            An error occurred while loading the bear list
-        </div>
-    </template>
-
+</div>
 </template>

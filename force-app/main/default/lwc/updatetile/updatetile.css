@@ -1,3 +1,24 @@
 .lgc-bg {
     background-color: rgb(242, 242, 242);
 }
+.container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin:5px;
+}
+.wrapper{
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+  }
+  table {
+	display: table;
+}
+table tr {
+	display: table-cell;
+}
+table tr td {
+	display: block;
+}
