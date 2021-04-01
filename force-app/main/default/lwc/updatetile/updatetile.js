@@ -28,8 +28,14 @@ const data = [{
     phone: '2352235235',
     trendIcon: 'utility:up'
 }];
-
-
+const columnsfel = [
+    {label: 'Name', fieldName: 'Name', type: 'text'},
+    {label: 'Title', fieldName: 'Title', type: 'text', cellAttributes:
+    { iconName: { fieldName: 'trendIcon' }, iconPosition: 'right' }},
+    /*{label: 'Amount', fieldName: 'amount', type: 'currency', typeAttributes: { currencyCode: 'EUR', step: '0.001'}},
+    {label: 'Contact Email', fieldName: 'contact', type: 'email'},
+    {label: 'Contact Phone', fieldName: 'phone', type: 'phone'},*/
+];
 export default class ButtonIconStatefulBasic extends LightningElement {
     @track likeState = false;
     @track answerState = false;
