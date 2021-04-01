@@ -5,6 +5,13 @@
         <template if:true={users}>
                 <div class="slds-text-color_error">
                     I am here
+                    <c-extdatatable
+                        key-field="id"
+                        data={users.data}
+                        show-row-number-column="false"
+                        hide-checkbox-column="false"
+                        columns={columnsfel}>
+                    </c-extdatatable>
                 </div>
                 <div style="height: 300px;">
                     <lightning-datatable
@@ -16,6 +23,7 @@
                             sorted-by={sortBy}
                             sorted-direction={sortDirection}>
                     </lightning-datatable>
+                    
                 </div> 
                     <!--template for:each={users.data} for:item="user">
 
