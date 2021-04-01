@@ -39,11 +39,18 @@ const data = [{
 import IDEN_FIELD from '@salesforce/schema/User.Id';
 import NOMBRE_FIELD from '@salesforce/schema/User.Name';
 import TITLE_FIELD from '@salesforce/schema/User.Title';
-const COLUMNSFEL = [
 
-    { label: 'Employee Name', fieldName: NOMBRE_FIELD.fieldApiName, type: 'text' },
-    { label: 'Title', fieldName: TITLE_FIELD.fieldApiName, type: 'text' },
+const actions = [
+    { label: 'Show details', name: 'show_details' },
+    { label: 'Delete', name: 'delete' }
 ];
+const COLUMNSFEL = [
+    { label:'Action', type: 'action', typeAttributes: { rowActions: actions, menuAlignment: 'left' } },
+    { label: 'Employee Name', sortable:'true', fieldName: NOMBRE_FIELD.fieldApiName, type: 'text' },
+    { label: 'Title', fieldName: TITLE_FIELD.fieldApiName, type: 'text' },
+
+];
+
     export default class ButtonIconStatefulBasic extends LightningElement {
     @track likeState = false;
     @track answerState = false;
@@ -83,6 +90,36 @@ columnsfel=COLUMNSFEL;
     handleAnswerButtonDisabledClick() {
         this.answerStateDisabled = !this.answerStateDisabled;
     }
+    handleRowAction(event) {
+        const action = event.detail.action;
+        const row = event.detail.row;
+        switch (action.name) {
+            case 'show_details':
+                alert('Showing Details: ' + JSON.stringify(row));
+                break;
+            case 'delete':
+                const rows = this.data;
+                const rowIndex = rows.indexOf(row);
+                rows.splice(rowIndex, 1);
+                this.data = rows;
+                break;
+        }
+    }
+    handleSelect() {
+        const rows = ['a'];
+        this.selectedRows = rows;
+
+    }
+    // The method onsort event handler
+    updateColumnSorting(event) {
+        var fieldName = event.detail.fieldName;
+        var sortDirection = event.detail.sortDirection;
+        // assign the latest attribute with the sorted column fieldName and sorted direction
+        this.sortedBy = fieldName;
+        this.sortedDirection = sortDirection;
+        this.data = this.sortData(fieldName, sortDirection);
+
+   }
 }
 
 

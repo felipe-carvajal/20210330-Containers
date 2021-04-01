@@ -1,8 +1,6 @@
 <template>
 
     <lightning-button-icon-stateful icon-name="utility:like" selected={likeState} onclick={handleLikeButtonClick} alternative-text="Like"></lightning-button-icon-stateful>
-    <div style="background: rgba(85, 202, 30, 0)" class="wrapper">
- 
         
         <template if:true={users}>
                 <div class="slds-text-color_error">
@@ -12,7 +10,10 @@
                     <lightning-datatable
                             key-field="id"
                             data={users.data}
-                            columns={columnsfel}>
+                            columns={columnsfel}
+                            onrowaction={handleRowAction}
+                            onsort={updateColumnSorting}
+                            selected-rows={selectedRows}>
                     </lightning-datatable>
                 </div> 
                     <!--template for:each={users.data} for:item="user">
@@ -29,7 +30,6 @@
             <div class="slds-text-color_error">
                 An error occurred while loading the bear list
             </div>
-
         </template>
-</div>
+
 </template>
