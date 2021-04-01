@@ -2,18 +2,19 @@
 
     <lightning-button-icon-stateful icon-name="utility:like" selected={likeState} onclick={handleLikeButtonClick} alternative-text="Like"></lightning-button-icon-stateful>
     <div style="background: rgba(85, 202, 30, 0)" class="wrapper">
-        <div style="height: 300px;">
-            <lightning-datatable
-                    key-field="id"
-                    data={users}
-                    columns={columnsfel}>
-            </lightning-datatable>
-        </div>  
+ 
         
         <template if:true={users}>
                 <div class="slds-text-color_error">
                     I am here
                 </div>
+                <div style="height: 300px;">
+                    <lightning-datatable
+                            key-field="id"
+                            data={users.data}
+                            columns={columnsfel}>
+                    </lightning-datatable>
+                </div> 
                     <template for:each={users.data} for:item="user">
 
                         <lightning-card  title="Employee" key={user.id}>

@@ -46,7 +46,7 @@ export default class ButtonIconStatefulBasic extends LightningElement {
     @track likeStateDisabled = false;
     @track answerStateDisabled = false;
     // Copied structure
-
+columnsfel=columnsfel;
     @wire (getAllUsers) users;
     data = data;
     columns = columns;
